@@ -5,7 +5,7 @@ using UnityEngine;
 public class ClickableObjects : MonoBehaviour
 {
 
-    public MovetoMouse movementAction;
+    public PlayerController movementAction;
 
     // Start is called before the first frame update
     void OnMouseDown()

@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class MovetoMouse : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     public float movespeed = 5f;
