@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float movespeed = 5f;
     private bool isMoving = false;
     private Vector2 objectPosition;
+    private System.Action targetReached;
 
     /*// Start is called before the first frame update
     void Start()
@@ -33,13 +34,16 @@ public class PlayerController : MonoBehaviour
         if (Vector2.Distance(transform.position, objectPosition) < 0.1f)
         {
             isMoving = false;
+            targetReached?.Invoke();
+            targetReached = null;
         }
     }
 
-    public void setTarget(Vector2 target)
+    public void MoveToTarget(Vector2 target, System.Action onArrival)
     {
         objectPosition = target;
         isMoving = true;
+        targetReached = onArrival;
     }
 }
 

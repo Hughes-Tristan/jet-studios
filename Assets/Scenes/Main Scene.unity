@@ -351,7 +351,7 @@ MonoBehaviour:
   itemAction: {fileID: 0}
   isPickupObject: 0
   isPlaceObject: 0
-  itemPrefab: {fileID: 0}
+  itemReference: {fileID: 0}
 --- !u!212 &196551011
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 293773756}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
   itemAction: {fileID: 8520943395986076894, guid: 6c82f75707d77dd4393cd163ebd68625, type: 3}
   isPickupObject: 1
   isPlaceObject: 0
-  itemPrefab: {fileID: 498175297}
+  itemReference: {fileID: 498175297}
 --- !u!212 &293773755
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -755,7 +755,7 @@ MonoBehaviour:
   itemAction: {fileID: 0}
   isPickupObject: 0
   isPlaceObject: 0
-  itemPrefab: {fileID: 0}
+  itemReference: {fileID: 0}
 --- !u!212 &796629485
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 849634248}
   m_Layer: 0
   m_Name: GameObject (2)
-  m_TagString: Untagged
+  m_TagString: Place
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -903,7 +903,7 @@ MonoBehaviour:
   itemAction: {fileID: 498175298}
   isPickupObject: 0
   isPlaceObject: 1
-  itemPrefab: {fileID: 498175297}
+  itemReference: {fileID: 498175297}
 --- !u!212 &849634250
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1477,6 +1477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoffeeItem
       objectReference: {fileID: 0}
+    - target: {fileID: 5113912595764263846, guid: 6c82f75707d77dd4393cd163ebd68625, type: 3}
+      propertyPath: m_TagString
+      value: Pickup
+      objectReference: {fileID: 0}
     - target: {fileID: 7467647373786751384, guid: 6c82f75707d77dd4393cd163ebd68625, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.6099052
@@ -1537,6 +1541,10 @@ PrefabInstance:
       propertyPath: pickupTable
       value: 
       objectReference: {fileID: 293773753}
+    - target: {fileID: 8520943395986076894, guid: 6c82f75707d77dd4393cd163ebd68625, type: 3}
+      propertyPath: spawnObject
+      value: 
+      objectReference: {fileID: 293773752}
     - target: {fileID: 8520943395986076894, guid: 6c82f75707d77dd4393cd163ebd68625, type: 3}
       propertyPath: moneyManager
       value: 
@@ -1775,7 +1783,7 @@ MonoBehaviour:
   itemAction: {fileID: 0}
   isPickupObject: 0
   isPlaceObject: 0
-  itemPrefab: {fileID: 0}
+  itemReference: {fileID: 0}
 --- !u!212 &1872026652
 SpriteRenderer:
   m_ObjectHideFlags: 0

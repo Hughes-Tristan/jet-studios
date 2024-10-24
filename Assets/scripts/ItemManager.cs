@@ -6,60 +6,62 @@ using static UnityEditor.Progress;
 
 public class ItemManager : MonoBehaviour
 {
-    private bool isHoldingItem = false;
+    //private bool isHoldingItem = false;
     public WaveManager moneyManager;
-    //public GameObject itemPrefab;
-    [SerializeField] private GameObject activeItem;
-    public float spawnDelayMin = 3, spawnDelayMax = 6;
+    public GameObject spawnObject;
+    public GameObject itemPrefab;
+    public GameObject activeItem;
+    public float spawnDelayMin = 3;
+    public float spawnDelayMax = 6;
 
-    public void Start()
-    {
-        activeItem.SetActive(false);
-        spawnItem();
-        Debug.Log("dummy test");
-    }
 
     // Function for picking up an item
-    public void pickupItem(Vector2 position)
+    public void pickupItem(GameObject item)
     {
         Debug.Log("pickup called");
-        Debug.Log($"isHoldingItem: {isHoldingItem}, item.activeSelf: {activeItem.activeSelf}");
+        //Debug.Log($"isHoldingItem: {isHoldingItem}, item.activeSelf: {activeItem.activeSelf}");
 
-        if (!isHoldingItem && activeItem != null)
+        if (item != null)
         {
-            Debug.Log("pickup debug");
-            isHoldingItem = true;
-            Destroy(activeItem);
-            activeItem = null;
-            Debug.Log("Item Received!");
-
-            StartCoroutine(respawnItem());
+            item.SetActive(false);
+            activeItem = item;
+            Debug.Log("Item picked up!");
+        }
+        else
+        {
+            Debug.LogWarning("Item is not set or not found!");
         }
     }
     // Function for placing an item
     public void placeItem(Vector2 position)
     {
-        if (isHoldingItem)
+        if (activeItem != null)
         {
-            isHoldingItem = false;
+            activeItem.transform.position = position;
+            activeItem.SetActive(true);
             moneyManager.EarnMoney(10);
             Debug.Log("Item placed... you earned $10");
-        }
-    }
 
-    private void spawnItem()
-    {
-        if(!activeItem.activeSelf && !isHoldingItem)
+            activeItem = null;
+            StartCoroutine(respawnItem());
+        } 
+        else
         {
-            activeItem.SetActive(true);
-            Debug.Log("Item respawned.");
+            Debug.LogWarning("No item to place");
         }
     }
 
     private IEnumerator respawnItem()
     {
         float spawnDelay = Random.Range(spawnDelayMin, spawnDelayMax);
+        Debug.Log($"Item will respawn in {spawnDelay} seconds");
         yield return new WaitForSeconds(spawnDelay);
-        spawnItem();
+        
+        Vector2 spawnPosition = spawnObject.transform.position;
+        GameObject newItem = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
+        activeItem = newItem;
+        Debug.Log("Respawned after {spawnDelay} seconds.");
+
+        ClickableObjects.resetItemAvailability();
     }
 }
