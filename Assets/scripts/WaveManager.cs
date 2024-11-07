@@ -9,6 +9,8 @@ public class WaveManager : MonoBehaviour
     // Reference to the wave bar image
     public Image waveBar;
 
+    public static WaveManager Instance { get; private set; }
+
     // Wave management variables
     public int currentWave = 1;
     public int totalWaves = 5;
@@ -25,6 +27,16 @@ public class WaveManager : MonoBehaviour
     // Purchase box variables
     public Image purchaseBox; // Reference to the purchase box image
     public int purchaseCost = 100; // Cost to purchase
+
+    void Awake()
+    {
+        if (Instance != null) {
+            Destroy(gameObject);
+        } else {
+            Instance = this;
+        }
+
+    }
 
     void Start()
     {
