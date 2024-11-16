@@ -1,3 +1,8 @@
+
+// Developer(s): Tristan Hughes
+// Last Updated: 11-16-24
+// Player Controller Script (controls player movements)
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,9 +11,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Player Controller Variables and References
+    // public player controller  variables
     public float moveSpeed = 5;
     public SpriteRenderer itemHeldRender;
+
+    // private player contorller variables
     private Vector3 playerPos;
     private WaveManager waveManager;
     private Items itemHeld;
@@ -25,10 +32,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // update functions that will be checked every frame
         checkMoving();
         checkInput();
     }
 
+    // this function  is a private function to check if  the player is moving or not
+    // if the player is moving then move the player towards the location
+    // you can change the moveSpeed to change how fast the player moves
+    // once the player reaches the the click position within a certain distance stop the player movement
     private void checkMoving()
     {
         if (isPlayerMoving)
@@ -42,11 +54,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // checking for if the player clicks
+    // if the player clicks an there is no collider attached to any object clicked
+    // then the player will just move to the mouse position
+    //
+    // if the player clicks and detects a collider then the item will connect to the player
+    // and it will start the coroutine to pick up  the kitchen item
     private void checkInput()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            // this is how the mouse position is  registered in the world space
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //  this is how we check if there is an item to pick up
+            // make sure to give the items a collider for this to  work
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             if (hit.collider != null)
             {
@@ -72,6 +93,12 @@ public class PlayerController : MonoBehaviour
     
     }
 
+    // this function is designed as a coroutine for player interactions
+    // while the player is  moving then you need to continue to the next frame
+    // this is to wait before the player picks up an item
+    // once the player stops moving we will check if the collider that was detected is a customer or an item
+    // if it is an item then call the pickup function, destroy the item, then leave the coroutine
+    // if it is a customer then call the deliverorder function  then leave  the coroutine
     private System.Collections.IEnumerator playerInteraction(GameObject player)
     {
         while (isPlayerMoving)
@@ -96,6 +123,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    // this function delivers an item to a customer
+    // if no item is held then do nothing
+    // if an item is held then if the items are received by a customer
+    // then update the item held variable and  call the update function
     private void deliverOrder(Customers activeCustomer)
     {
         if (itemHeld != null)
@@ -114,10 +145,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //this function updates depending on if an item is held or not
+    // if there is a item and it is being held display its sprite
+    // if there is no item being held, hide the render
     private void updateHeldItem()
     {
-        // if there is a item and it is being held display its sprite
-        // if there is no item being held, hide the the render
         if (itemHeldRender != null)
         {
             if(itemHeld != null)
@@ -132,6 +164,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // this  function sets the held item as the given item then calls the update function 
     private void pickupItem(Items item)
     {
         if(itemHeld == null)
@@ -141,6 +174,8 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    // this function simply updates the player postion to the given  position
+    // then it sets the player movement to true
     private void setPlayerPos(Vector3 position)
     {
         playerPos = position;
