@@ -3,6 +3,9 @@
 // Last Updated: 11-16-24
 // Player Controller Script (controls player movements)
 
+// the intended purpose of this class is to manage player behavior.
+// it also provides a method for
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -65,21 +68,26 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // this is how the mouse position is  registered in the world space
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos;
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //  this is how we check if there is an item to pick up
             // make sure to give the items a collider for this to  work
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+            RaycastHit2D hit;
+            hit = Physics2D.Raycast(mousePos, Vector2.zero);
             if (hit.collider != null)
             {
-                KitchenItems kitchenItem = hit.collider.GetComponent<KitchenItems>();
+                KitchenItems kitchenItem;
+                kitchenItem = hit.collider.GetComponent<KitchenItems>();
                 if (kitchenItem != null)
                 {
                     setPlayerPos(hit.collider.transform.position);
                     StartCoroutine(playerInteraction(kitchenItem.gameObject));
+                    kitchenItem.itemRespawn();
                     return;
                 }
 
-                Customers customer = hit.collider.GetComponent<Customers>();
+                Customers customer;
+                customer = hit.collider.GetComponent<Customers>();
                 if (customer != null)
                 {
                     setPlayerPos(hit.collider.transform.position);
@@ -99,22 +107,32 @@ public class PlayerController : MonoBehaviour
     // once the player stops moving we will check if the collider that was detected is a customer or an item
     // if it is an item then call the pickup function, destroy the item, then leave the coroutine
     // if it is a customer then call the deliverorder function  then leave  the coroutine
-    private System.Collections.IEnumerator playerInteraction(GameObject player)
+    private IEnumerator playerInteraction(GameObject player)
     {
         while (isPlayerMoving)
         {
             yield return null;
         }
 
-        KitchenItems item = player.GetComponent<KitchenItems>();
+        KitchenItems item;
+        item = player.GetComponent<KitchenItems>();
         if (item != null)
         {
-            pickupItem(item.getItem());
-            item.destroy();
+            if(itemHeld == null)
+            {
+                pickupItem(item.getItem());
+                item.itemRespawn();
+            } else
+            {
+                itemHeld = item.getItem();
+                updateHeldItem();
+                item.itemRespawn();
+            }
             yield break;
         }
 
-        Customers customer = player.GetComponent<Customers>();
+        Customers customer;
+        customer = player.GetComponent<Customers>();
         if (customer != null)
         {
             deliverOrder(customer);
@@ -131,12 +149,16 @@ public class PlayerController : MonoBehaviour
     {
         if (itemHeld != null)
         {
-            if (activeCustomer.orderReceived(itemHeld))
+            bool orderAccepted = activeCustomer.orderReceived(itemHeld);
+            if (orderAccepted)
             {
                 itemHeld = null;
                 updateHeldItem();
 
                 Debug.Log("item delivered");
+            } else
+            {
+                Debug.Log("the customer did not like this item");
             }
         } else
         {
@@ -167,11 +189,8 @@ public class PlayerController : MonoBehaviour
     // this  function sets the held item as the given item then calls the update function 
     private void pickupItem(Items item)
     {
-        if(itemHeld == null)
-        {
-            itemHeld = item;
-            updateHeldItem();
-        }
+        itemHeld = item;
+        updateHeldItem();
     }
     
     // this function simply updates the player postion to the given  position

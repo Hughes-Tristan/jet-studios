@@ -22,7 +22,7 @@ public class WaveManager : MonoBehaviour
 
     // Money counter variables
     public TMP_Text moneyCounterText; // Use TMP_Text for TextMeshPro
-    private int money = 20; // Current amount of money
+    private int money = 0; // Current amount of money
 
     // Purchase box variables
     public Image purchaseBox; // Reference to the purchase box image
@@ -30,10 +30,10 @@ public class WaveManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null) {
-            Destroy(gameObject);
-        } else {
+        if (Instance == null) {
             Instance = this;
+        } else {
+            Destroy(gameObject);
         }
 
     }
