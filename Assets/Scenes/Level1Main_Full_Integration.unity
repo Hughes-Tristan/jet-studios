@@ -3857,6 +3857,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   itemHeldRender: {fileID: 1812027188}
+  minBoundaryX: -15
+  maxBoundaryX: -5
+  minBoundaryY: -8
+  maxBoundaryY: 4.5
 --- !u!61 &1966267065
 BoxCollider2D:
   m_ObjectHideFlags: 0
