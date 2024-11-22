@@ -9,7 +9,7 @@ public class ZombieMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component.
+        rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component that's attached to enemy
     }
 
     void Update()

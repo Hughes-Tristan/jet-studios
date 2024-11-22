@@ -8,12 +8,13 @@ public class ZombieAttack : MonoBehaviour
     private Collider2D attackCollider;
 
     // Start is called before the first frame update
+    // In this function, initialized attack collider object
     void Start()
     {
         attackCollider = GetComponent<Collider2D>();
     }
 
-    // This will detect if the zombie is in contact with a target object (like a Player or Tower)
+    // This will detect if the zombie is in contact with a target object (like a Player or Tower but is subject to change)
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the object has the "Player" or "Tower" tag
