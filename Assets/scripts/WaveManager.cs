@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Make sure to include this for TextMeshPro
+using TMPro; // TextMeshPro
 
 public class WaveManager : MonoBehaviour
 {
     // Reference to the wave bar image
     public Image waveBar;
 
+    // Object of wave manager, checks if instance of wave manager exists
     public static WaveManager Instance { get; private set; }
 
     // Wave management variables
@@ -28,12 +29,13 @@ public class WaveManager : MonoBehaviour
     public Image purchaseBox; // Reference to the purchase box image
     public int purchaseCost = 100; // Cost to purchase
 
+    // Singleton pattern
     void Awake()
     {
-        if (Instance == null) {
-            Instance = this;
+        if (Instance == null) { // If instance of wave manager is null or not
+            Instance = this; 
         } else {
-            Destroy(gameObject);
+            Destroy(gameObject); // To not create a duplicate instance
         }
 
     }
@@ -86,5 +88,4 @@ public class WaveManager : MonoBehaviour
         moneyCounterText.text = $"Money: ${money}"; // Update the UI text
     }
 
-    // Additional methods for managing grills, money, etc., can be added here
 }
