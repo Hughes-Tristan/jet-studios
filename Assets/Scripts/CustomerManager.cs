@@ -1,10 +1,10 @@
 
 // Developer(s): Tristan Hughes
-// Last Updated: 11-16-24
-// Customers Class
+// Last Updated: 11-21-24
+// Customer Manager Class
 
 // the intended purpose of this class is to manage the customer line, spawning of customers and seating
-// it also provides a method for spawning customers, 
+// it also provides a method for spawning customers, seating customers, updating the line, managing the line, and checking if seats are available
 
 using System.Collections;
 using System.Collections.Generic;
@@ -106,6 +106,7 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
+
     // this function is a coroutine
     // it is used to check the length of the line
     // if the line length is more that the customer count
@@ -116,7 +117,7 @@ public class CustomerManager : MonoBehaviour
         {
             float randomizedTime;
             float countLine;
-            randomizedTime = Random.Range(6, 12);
+            randomizedTime = Random.Range(2, 12);
             yield return new WaitForSeconds(randomizedTime);
             countLine = customerLine.Count;
             if (lineLength > countLine)
