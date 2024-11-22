@@ -1,6 +1,6 @@
 
 // Developer(s): Tristan Hughes
-// Last Updated: 11-16-24
+// Last Updated: 11-21-24
 // Player Controller Script (controls player movements)
 
 // the intended purpose of this class is to manage player behavior.
@@ -9,7 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Build.Content;
+//using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -128,6 +128,7 @@ public class PlayerController : MonoBehaviour
                 updateHeldItem();
                 item.itemRespawn();
             }
+            
             yield break;
         }
 

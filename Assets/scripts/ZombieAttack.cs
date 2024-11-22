@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Developer(s): Evita Kanaan
+// Last Updated: 11-21-24
+// Enemy Attack Class
+
+// the intended purpose of this class is to control enemy attacks.
+
 public class ZombieAttack : MonoBehaviour
 {
     // Reference to the collider for the attack area

@@ -1,3 +1,8 @@
+
+// Developer(s): Evita Kanaan
+// Last Updated: 11-21-24
+// Wave Manager Class
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,6 +1,6 @@
 
 // Developer(s): Tristan Hughes
-// Last Updated: 11-16-24
+// Last Updated: 11-21-24
 // Customers Class
 
 // the intended purpose of this class is to manage customer behavior.
@@ -61,7 +61,7 @@ public class Customers : MonoBehaviour
         }
     }
 
-    // this function checks to see if and order is received by the customer or not
+    // this function checks to see if an order is received by the customer or not
     // if the items order is the same as the item given to the customer the player will earn money
     // otherwise the order received is not correct
     public bool orderReceived(Items item)
