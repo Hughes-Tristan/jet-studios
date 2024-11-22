@@ -6,6 +6,7 @@ public class WeaponManager : MonoBehaviour {
     private WeaponTypeListSO weaponTypeList;
     private WeaponTypeSO weaponType;
     private Camera mainCamera;
+    WaveManager waveManager;
 
     private bool isWeaponSelected = false; // Flag to track if a weapon is selected
 
@@ -16,6 +17,7 @@ public class WeaponManager : MonoBehaviour {
 
     private void Start() {
         mainCamera = Camera.main;
+        waveManager = WaveManager.Instance;
     }
 
     private void Update() {
@@ -28,6 +30,8 @@ public class WeaponManager : MonoBehaviour {
 
     private void TryPlaceWeapon() {
         Tile highlightedTile = Tile.GetHighlightedTile(); // Get the tile currently highlighted by the mouse
+        int moneyCounter;
+        moneyCounter = waveManager.getMoney();
 
         if (highlightedTile != null) {
             if (!highlightedTile.CanBuild()) {
@@ -39,13 +43,25 @@ public class WeaponManager : MonoBehaviour {
             StatsTypeSO moneyStat = Resources.Load<StatsTypeListSO>(typeof(StatsTypeListSO).Name).list[0]; // Assume money is the first stat
             int currentMoney = StatsManager.Instance.GetStatsAmount(moneyStat);
 
-            if (currentMoney >= weaponType.price) {
+           
+
+            if (moneyCounter >= weaponType.price) {
                 // Place weapon at the center of the highlighted tile
                 Transform builtTransform = Instantiate(weaponType.prefab, highlightedTile.transform.position, Quaternion.identity);
                 highlightedTile.SetTransform(builtTransform); // Mark the tile as occupied
 
+                temporaryDefense defenseWeapon = builtTransform.GetComponent<temporaryDefense>();
+                if (defenseWeapon != null)
+                {
+                    defenseWeapon.initializeHealth(weaponType.health);
+                }
+
+                waveManager.spendMoney(weaponType.price);
+
                 // Deduct the price
                 StatsManager.Instance.SubtractStatsAmount(moneyStat, weaponType.price);
+
+                
 
                 // Reset weapon selection after placement
                 isWeaponSelected = false;

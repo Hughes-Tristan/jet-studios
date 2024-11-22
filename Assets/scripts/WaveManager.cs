@@ -28,7 +28,7 @@ public class WaveManager : MonoBehaviour
 
     // Money counter variables
     public TMP_Text moneyCounterText; // Use TMP_Text for TextMeshPro
-    private int money = 0; // Current amount of money
+    private int money = 100; // Current amount of money
 
     // Purchase box variables
     public Image purchaseBox; // Reference to the purchase box image
@@ -88,9 +88,24 @@ public class WaveManager : MonoBehaviour
         UpdateMoneyCounter(); // Update the money display
     }
 
+    // this function operates fundamentally exactly like earn money
+    // takes the amount of money you spent and subtracts from your overall money
+    // then updates the money counter
+    public void spendMoney(int amount)
+    {
+        money -= amount;
+        UpdateMoneyCounter();
+    }
+
     private void UpdateMoneyCounter()
     {
         moneyCounterText.text = $"Money: ${money}"; // Update the UI text
+    }
+
+    // this function is a getter function used to get the amount of money
+    public int getMoney()
+    {
+        return money;
     }
 
 }
