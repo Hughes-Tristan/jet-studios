@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340c9394d7dc24c5b93d9ee9d2f9215c, type: 3}
+  m_Name: AxeCatKnight
+  m_EditorClassIdentifier: 
+  nameString: Axe Cat Knight
+  prefab: {fileID: 3663233228904864774, guid: 1c35bc263ec3b4735bebd3e370305005, type: 3}
+  price: 10
+  health: 80
