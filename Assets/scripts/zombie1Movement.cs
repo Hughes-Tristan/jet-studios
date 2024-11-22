@@ -34,7 +34,7 @@ public class ZombieMovement : MonoBehaviour
     }
 
     // this function destroys the game object to simulate a death
-    void onCharDeath()
+    public void onCharDeath()
     {
         Destroy(gameObject);
     }

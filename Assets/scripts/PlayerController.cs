@@ -4,7 +4,7 @@
 // Player Controller Script (controls player movements)
 
 // the intended purpose of this class is to manage player behavior.
-// it also provides a method for
+// it also provides methods for
 
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +23,12 @@ public class PlayerController : MonoBehaviour
     private WaveManager waveManager;
     private Items itemHeld;
     private bool isPlayerMoving = false;
+
+    // player boundaries
+    public float minBoundaryX = -10.0f;
+    public float maxBoundaryX = 10.0f;
+    public float minBoundaryY = -10.0f;
+    public float maxBoundaryY = 10.0f;
 
     void Start()
     {
@@ -198,7 +204,15 @@ public class PlayerController : MonoBehaviour
     // then it sets the player movement to true
     private void setPlayerPos(Vector3 position)
     {
-        playerPos = position;
+        if (position.x >= minBoundaryX && position.x <= maxBoundaryX && position.y >= minBoundaryY && position.y <= maxBoundaryY)
+        {
+        playerPos = new Vector3(
+            Mathf.Clamp(position.x, minBoundaryX, maxBoundaryX),
+            Mathf.Clamp(position.y, minBoundaryY, maxBoundaryY),
+            position.z
+            );
+        }
+       
         isPlayerMoving = true;
     }
 }
