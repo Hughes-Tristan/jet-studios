@@ -68,7 +68,7 @@ public class Customers : MonoBehaviour
     {
         if(item == itemOrdered)
         {
-            waveManager.EarnMoney(10);
+            waveManager.EarnMoney(15);
            
             CustomerManager.instance.seatAvailable(seatAssigned);
             Destroy(gameObject);

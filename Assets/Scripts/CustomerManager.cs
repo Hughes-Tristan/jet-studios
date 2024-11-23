@@ -117,7 +117,7 @@ public class CustomerManager : MonoBehaviour
         {
             float randomizedTime;
             float countLine;
-            randomizedTime = Random.Range(2, 12);
+            randomizedTime = Random.Range(1, 5);
             yield return new WaitForSeconds(randomizedTime);
             countLine = customerLine.Count;
             if (lineLength > countLine)

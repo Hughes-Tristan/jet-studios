@@ -17,6 +17,8 @@ public class ZombieMovement : MonoBehaviour
     private bool attacking = false;
     public float health = 10.0f;
 
+    public float damageDealt = 3.0f;
+
     // hit reation variables
     private SpriteRenderer enemyRender;
     private Color enemyOriginal;
@@ -96,12 +98,12 @@ public class ZombieMovement : MonoBehaviour
                 Debug.Log("no defense found");
                 if (gameEnder != null)
                 {
-                    gameEnder.takeDamage(1.0f);
+                    gameEnder.takeDamage(damageDealt);
                 }
                 
             } else
             {
-                defenseComponent.takeDamage(1.0f);
+                defenseComponent.takeDamage(damageDealt);
             }
             yield return new WaitForSeconds(1f);
         }
