@@ -28,9 +28,11 @@ public class projectiles : MonoBehaviour
     {
         ZombieMovement enemy = collision.GetComponent<ZombieMovement>();
         enemy.health -= projectileDamage;
-        if (enemy.health < 0)
+        if (enemy.health <= 0)
         {
             enemy.onCharDeath();
+        } else if (enemy.health > 0) {
+            StartCoroutine(enemy.hitReaction());
         }
 
             

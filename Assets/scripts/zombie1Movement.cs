@@ -17,9 +17,20 @@ public class ZombieMovement : MonoBehaviour
     private bool attacking = false;
     public float health = 10.0f;
 
+    // hit reation variables
+    private SpriteRenderer enemyRender;
+    private Color enemyOriginal;
+    public float flashTime = 0.2f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component that's attached to enemy
+
+        enemyRender = GetComponent<SpriteRenderer>();
+        if(enemyRender != null)
+        {
+            enemyOriginal = enemyRender.color;
+        }
     }
 
     void Update()
@@ -31,6 +42,18 @@ public class ZombieMovement : MonoBehaviour
         {
             onCharDeath();
         }
+    }
+
+    // this function is another coroutine that makes the enemy flash white
+    public IEnumerator hitReaction()
+    {
+        if(enemyRender != null)
+        {
+            enemyRender.color = Color.white;
+            yield return new WaitForSeconds(0.2f);
+
+        }
+        
     }
 
     // this function destroys the game object to simulate a death
