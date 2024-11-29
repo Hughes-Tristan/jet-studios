@@ -605,6 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 113335657}
   - component: {fileID: 113335658}
+  - component: {fileID: 113335659}
   m_Layer: 0
   m_Name: zombiespawner
   m_TagString: Untagged
@@ -641,6 +642,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: 073ad2134593e9f4db302cb6b8ef31ae, type: 3}
   spawnInterval: 5
+  spawnPoints:
+  - {fileID: 1659756687}
+  - {fileID: 1789374303}
+  - {fileID: 1094744499}
+  - {fileID: 817350299}
+  - {fileID: 44054790}
+--- !u!114 &113335659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113335656}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2896cfdf53d3d76488989f0361d0ebf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombiePrefab: {fileID: 563328872337749452, guid: 8a272f9c88b141e4394c849f7a46c893, type: 3}
+  spawnInterval: 10
   spawnPoints:
   - {fileID: 1659756687}
   - {fileID: 1789374303}
