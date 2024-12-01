@@ -2,7 +2,6 @@
 // Developer(s): Evita Kanaan
 // Last Updated: 11-21-24
 // Wave Manager Class
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,9 +36,12 @@ public class WaveManager : MonoBehaviour
     // Singleton pattern
     void Awake()
     {
-        if (Instance == null) { // If instance of wave manager is null or not
-            Instance = this; 
-        } else {
+        if (Instance == null)
+        { // If instance of wave manager is null or not
+            Instance = this;
+        }
+        else
+        {
             Destroy(gameObject); // To not create a duplicate instance
         }
 
@@ -99,9 +101,10 @@ public class WaveManager : MonoBehaviour
 
     private void UpdateMoneyCounter()
     {
-        moneyCounterText.text = $"Money: ${money}"; // Update the UI text
+        moneyCounterText.text = $"${money}"; // Update the UI text
     }
 
+    // this function is a getter function used to get the amount of money
     // this function is a getter function used to get the amount of money
     public int getMoney()
     {

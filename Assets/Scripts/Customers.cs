@@ -69,7 +69,10 @@ public class Customers : MonoBehaviour
         if(item == itemOrdered)
         {
             waveManager.EarnMoney(10);
-           
+            //when customer recieves order, player earns money and sfx coin is triggered
+            SFXManager.Instance.PlayMoneySound();
+
+
             CustomerManager.instance.seatAvailable(seatAssigned);
             Destroy(gameObject);
             return true;
