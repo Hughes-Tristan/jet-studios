@@ -66,7 +66,7 @@ public class CustomerManager : MonoBehaviour
         customers.exitpoint = exit;
         customerLine.Enqueue(spawnedCustomer);
         Debug.Log("Customer Spawned!");
-        //seatCustomer();
+        seatCustomer();
         updateLine();
     }
 
