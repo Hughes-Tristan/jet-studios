@@ -27,8 +27,8 @@ public class ZombieSpawner : MonoBehaviour
         // Start spawning zombies at regular intervals
         InvokeRepeating("SpawnZombie", spawnDelay, spawnInterval);
         AudioSource[] audiosources = GetComponents<AudioSource>();
-        audioSourceDeath = audiosources[0];
-        audioSourceHit = audiosources[1];
+        //audioSourceDeath = audiosources[0];
+        //audioSourceHit = audiosources[1];
     }
 
   

@@ -76,7 +76,7 @@ public class ZombieMovement : MonoBehaviour
     // this function destroys the game object to simulate a death
     public void onCharDeath()
     {
-        audioSource.PlayOneShot(deathSound);
+        //audioSource.PlayOneShot(deathSound);
         Destroy(gameObject);
     }
 

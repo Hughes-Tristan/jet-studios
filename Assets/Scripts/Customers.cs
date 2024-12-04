@@ -69,7 +69,7 @@ public class Customers : MonoBehaviour
 
                 CustomerManager.instance.seatAvailable(seatAssigned);
                 Vector3 exitPos = exitpoint.position;
-                itemManager.playMoneySound();
+                //itemManager.playMoneySound();
                 leave(exitPos);
 
                 //Destroy(gameObject);
