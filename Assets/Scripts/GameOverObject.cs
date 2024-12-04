@@ -18,7 +18,7 @@ public class GameOverObject : MonoBehaviour
     // this function loads the game over scene when it is destroyed
     void GameOver()
     {
-        SceneManager.LoadScene("Game Over Scene");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     // this function subtracts the damage amount from the health

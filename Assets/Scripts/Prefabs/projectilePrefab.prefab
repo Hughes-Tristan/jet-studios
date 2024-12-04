@@ -163,4 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDestroy: 10
   projectileSpeed: 5
-  projectileDamage: 3
+  projectileDamage: 6

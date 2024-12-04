@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5848046666583381985}
   - component: {fileID: 7650252855366273053}
   m_Layer: 6
-  m_Name: zombie
+  m_Name: fastzombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 2.2, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1518495269
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -8888697765149574291, guid: fe50fad92c135fe4f872e6435ee5e01c, type: 3}
+  m_Sprite: {fileID: 3706151230691508943, guid: fe50fad92c135fe4f872e6435ee5e01c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -149,8 +149,8 @@ BoxCollider2D:
   m_Offset: {x: -0.07, y: 0.9}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.6233766, y: -0.6082474}
-    oldSize: {x: 0.77, y: 0.97}
+    pivot: {x: 0.35999998, y: -0.6020408}
+    oldSize: {x: 0.75, y: 0.98}
     newSize: {x: 0.77, y: 0.97}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da74202587fde1443adb1903ed743431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.45
-  health: 41
+  moveSpeed: 1.25
+  health: 7
   maxHealth: 0
   damageDealt: 11
   isArmored: 0
