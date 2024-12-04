@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61bd25a5dba6ae4e857a7e4ce34ceeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 6
-  projectileFirerate: 1
+  health: 12
+  projectileFirerate: 0.8
   nextShot: 0
   projectileSpawnpoint: {fileID: 9186947296253311737}
   projectilePrefab: {fileID: 5891032452770856537, guid: 473e06bb25e33c043a3fb1a58f0641d8, type: 3}

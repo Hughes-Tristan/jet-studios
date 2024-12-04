@@ -1,7 +1,7 @@
 
 // Developer(s): Tristan Hughes
 // Last Updated: 11-16-24
-// Customers Class
+// Item Manager Class
 
 // the intended purpose of this class is to manager the list of available items
 // it also provides a method for selecting a random item
@@ -14,6 +14,7 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     public static ItemManager Instance { get; private set; }
+    private AudioSource audioSource;
 
     public List<Items> itemsAvailable;
 
@@ -30,6 +31,12 @@ public class ItemManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -54,5 +61,10 @@ public class ItemManager : MonoBehaviour
         } 
         return randomItem;
 
+    }
+    // this function is designed to play the audio for selling items
+    public void playMoneySound()
+    {
+        audioSource.Play();
     }
 }

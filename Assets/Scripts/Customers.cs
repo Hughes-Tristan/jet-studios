@@ -21,17 +21,15 @@ public class Customers : MonoBehaviour
     private bool isMoving = false;
     public float moveSpeed = 2f;
     private Vector3 targetPos;
-    public Transform exitpoint; 
+    public Transform exitpoint;
+    private ItemManager itemManager;
 
     // Start is called before the first frame update
     void Start()
     {
         // this calls for the the wavemanager instance so the player can earn money
         waveManager = WaveManager.Instance;
-        if (waveManager == null)
-        {
-            Debug.LogError("WaveManager.Instance is null");
-        }
+        itemManager = ItemManager.Instance;
 
         // this gets the random item that the customer ordered
         itemOrdered = ItemManager.Instance.getRandomItem();
@@ -66,11 +64,14 @@ public class Customers : MonoBehaviour
         {
             if (item == itemOrdered)
             {
-                waveManager.EarnMoney(15);
+                waveManager.EarnMoney(20);
+                
 
                 CustomerManager.instance.seatAvailable(seatAssigned);
                 Vector3 exitPos = exitpoint.position;
+                itemManager.playMoneySound();
                 leave(exitPos);
+
                 //Destroy(gameObject);
                 return true;
             }

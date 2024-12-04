@@ -30,18 +30,8 @@ public class projectiles : MonoBehaviour
   
         if(enemy != null)
         {
-            enemy.health -= projectileDamage;
-            if (enemy.health <= 0)
-            {
-                enemy.onCharDeath();
-            }
-            else if (enemy.health > 0)
-            {
-                StartCoroutine(enemy.hitReaction());
-            }
+            enemy.takeDamage(projectileDamage);
             Destroy(gameObject);
-
-
         }
     }
 }

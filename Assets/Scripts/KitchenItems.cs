@@ -17,11 +17,13 @@ public class KitchenItems : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Collider2D collider2DRef;
+    
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider2DRef = GetComponent<Collider2D>();
+        
     }
 
     // this is a public getter function to return the item
