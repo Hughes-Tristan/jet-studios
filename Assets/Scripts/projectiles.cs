@@ -27,14 +27,11 @@ public class projectiles : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ZombieMovement enemy = collision.GetComponent<ZombieMovement>();
-        enemy.health -= projectileDamage;
-        if (enemy.health < 0)
+  
+        if(enemy != null)
         {
-            enemy.onCharDeath();
+            enemy.takeDamage(projectileDamage);
+            Destroy(gameObject);
         }
-
-            
-        Destroy(gameObject);
-
     }
 }

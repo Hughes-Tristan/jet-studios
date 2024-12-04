@@ -75,20 +75,20 @@ public class PlayerController : MonoBehaviour
         {
             // this is how the mouse position is  registered in the world space
             Vector2 mousePos;
+            KitchenItems kitchenItem;
+            RaycastHit2D hit;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //  this is how we check if there is an item to pick up
-            // make sure to give the items a collider for this to  work
-            RaycastHit2D hit;
+            // make sure to give the items a collider for this to  work 
             hit = Physics2D.Raycast(mousePos, Vector2.zero);
             if (hit.collider != null)
             {
-                KitchenItems kitchenItem;
                 kitchenItem = hit.collider.GetComponent<KitchenItems>();
                 if (kitchenItem != null)
                 {
                     setPlayerPos(hit.collider.transform.position);
                     StartCoroutine(playerInteraction(kitchenItem.gameObject));
-                    kitchenItem.itemRespawn();
+                    //kitchenItem.itemRespawn();
                     return;
                 }
 
@@ -109,42 +109,52 @@ public class PlayerController : MonoBehaviour
 
     // this function is designed as a coroutine for player interactions
     // while the player is  moving then you need to continue to the next frame
+    // we need to have a distance check for the item that the player clicks so if the player is not within a certain distance
+    // then the player will no pick up the item
+    // once the player gets close enough he will pick up the item
     // this is to wait before the player picks up an item
     // once the player stops moving we will check if the collider that was detected is a customer or an item
     // if it is an item then call the pickup function, destroy the item, then leave the coroutine
     // if it is a customer then call the deliverorder function  then leave  the coroutine
-    private IEnumerator playerInteraction(GameObject player)
+    private IEnumerator playerInteraction(GameObject targetObject)
     {
+        KitchenItems item;
+        Customers customer;
+
         while (isPlayerMoving)
         {
             yield return null;
         }
 
-        KitchenItems item;
-        item = player.GetComponent<KitchenItems>();
-        if (item != null)
-        {
-            if(itemHeld == null)
+        if (Vector3.Distance(transform.position, targetObject.transform.position) <= 0.6f){
+
+            item = targetObject.GetComponent<KitchenItems>();
+
+            if (item != null)
             {
-                pickupItem(item.getItem());
-                item.itemRespawn();
-            } else
-            {
-                itemHeld = item.getItem();
-                updateHeldItem();
-                item.itemRespawn();
+                if (itemHeld == null)
+                {
+                    pickupItem(item.getItem());
+                    item.itemRespawn();
+                }
+                else
+                {
+                    itemHeld = item.getItem();
+                    updateHeldItem();
+                    item.itemRespawn();
+                }
+
+                yield break;
             }
-            
-            yield break;
+
+            customer = targetObject.GetComponent<Customers>();
+            if (customer != null)
+            {
+                deliverOrder(customer);
+                yield break;
+            }
         }
 
-        Customers customer;
-        customer = player.GetComponent<Customers>();
-        if (customer != null)
-        {
-            deliverOrder(customer);
-            yield break;
-        }
 
     }
 

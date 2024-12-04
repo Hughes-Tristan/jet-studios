@@ -16,10 +16,41 @@ public class ZombieMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool attacking = false;
     public float health = 10.0f;
+    public float maxHealth;
+
+    public float damageDealt = 3.0f;
+
+    public bool isArmored = false;
+    public bool isArmorBroken = false;
+
+    private ZombieSpawner zombieSpawner;
+
+    private AudioSource audioSource;
+    public AudioClip hitSound;
+    public AudioClip deathSound;
+
+
+    //public float spawnDelay = 0.0f;
+
+
+    // hit reation variables
+    private SpriteRenderer enemyRender;
+    private Color enemyOriginal;
+    public float flashTime = 0.2f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component that's attached to enemy
+        audioSource = GetComponent<AudioSource>();
+
+        enemyRender = GetComponent<SpriteRenderer>();
+        if(enemyRender != null)
+        {
+            enemyOriginal = enemyRender.color;
+        }
+        maxHealth = health;
+
+
     }
 
     void Update()
@@ -27,15 +58,25 @@ public class ZombieMovement : MonoBehaviour
         if (!attacking){
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         } 
-        if (health <= 0)
+
+    }
+
+    // this function is another coroutine that makes the enemy flash white
+    public IEnumerator hitReaction()
+    {
+        if(enemyRender != null)
         {
-            onCharDeath();
+            enemyRender.color = Color.white;
+            yield return new WaitForSeconds(0.2f);
+            enemyOriginal = enemyRender.color;
         }
+        
     }
 
     // this function destroys the game object to simulate a death
     public void onCharDeath()
     {
+        //audioSource.PlayOneShot(deathSound);
         Destroy(gameObject);
     }
 
@@ -73,14 +114,41 @@ public class ZombieMovement : MonoBehaviour
                 Debug.Log("no defense found");
                 if (gameEnder != null)
                 {
-                    gameEnder.takeDamage(1.0f);
+                    gameEnder.takeDamage(damageDealt);
                 }
                 
             } else
             {
-                defenseComponent.takeDamage(1.0f);
+                defenseComponent.takeDamage(damageDealt);
             }
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    public void takeDamage(float damageTaken)
+    {
+        audioSource.PlayOneShot(hitSound);
+        if (!isArmorBroken && isArmored)
+        {
+            health -= damageTaken * 0.5f;
+            bool armorShouldBreak;
+            armorShouldBreak = health <= maxHealth /2;
+            if (armorShouldBreak)
+            {
+                isArmorBroken = true;
+            }
+        }
+        else
+        {
+            health = health - damageTaken;
+            if(health <= 0)
+            {
+                onCharDeath();
+            }
+            else
+            {
+                StartCoroutine(hitReaction());
+            }
         }
     }
 
