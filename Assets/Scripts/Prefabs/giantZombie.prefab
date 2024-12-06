@@ -177,7 +177,7 @@ MonoBehaviour:
   damageDealt: 21
   isArmored: 0
   isArmorBroken: 0
-
+  isGiant: 1
   hitSound: {fileID: 0}
   deathSound: {fileID: 0}
   flashTime: 0.2

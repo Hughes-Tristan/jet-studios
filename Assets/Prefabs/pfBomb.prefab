@@ -92,9 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61bd25a5dba6ae4e857a7e4ce34ceeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 23
+  health: 10000
   projectileFirerate: 1
   nextShot: 0
+  isIndestructible: 1
   projectileSpawnpoint: {fileID: 0}
   projectilePrefab: {fileID: 0}
 --- !u!212 &1399200654270644211
@@ -161,6 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5086b2fe064cc545aaaf23b365b3d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 5
+  explosionRadius: 3
   explosionDelay: 2
   explosionEffect: {fileID: 0}
