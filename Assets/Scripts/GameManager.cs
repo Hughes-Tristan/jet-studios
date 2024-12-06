@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public void bossKillCount()
     {
         bossKills++;
-        if (bossKills >= 10)
+        if (bossKills >= 5)
         {
             setWinScreen();
         }
