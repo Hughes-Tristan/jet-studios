@@ -15,4 +15,4 @@ MonoBehaviour:
   nameString: Axe Cat Knight
   prefab: {fileID: 3663233228904864774, guid: 1c35bc263ec3b4735bebd3e370305005, type: 3}
   price: 15
-  health: 80
+  health: 60

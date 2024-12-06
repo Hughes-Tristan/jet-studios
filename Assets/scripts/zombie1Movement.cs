@@ -14,6 +14,7 @@ public class ZombieMovement : MonoBehaviour
 {
 
     private Animator zombieAnimator;
+    private Animator bossAnimator;
     public float moveSpeed = 2f;
     private Rigidbody2D rb;
     private bool attacking = false;
@@ -45,6 +46,7 @@ public class ZombieMovement : MonoBehaviour
     void Start()
     {
         zombieAnimator = GetComponent<Animator>();
+        bossAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component that's attached to enemy
         audioSource = GetComponent<AudioSource>();
 
@@ -63,6 +65,9 @@ public class ZombieMovement : MonoBehaviour
         if (!attacking){
             if(zombieAnimator != null){
                 zombieAnimator.SetTrigger("basicZombieMove");
+            }
+            if(bossAnimator != null){
+                bossAnimator.SetTrigger("bossMove");
             }
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         } 
@@ -101,6 +106,9 @@ public class ZombieMovement : MonoBehaviour
         if(zombieAnimator != null){
             zombieAnimator.SetTrigger("basicZombieAttack");
         }
+        if(bossAnimator != null){
+                bossAnimator.SetTrigger("bossAttack");
+            }
         if (collision.gameObject.CompareTag("defense"))
         {
             attacking = true;
@@ -115,6 +123,9 @@ public class ZombieMovement : MonoBehaviour
         if(zombieAnimator != null){
             zombieAnimator.SetTrigger("basicZombieMove");
         }
+        if(bossAnimator != null){
+                bossAnimator.SetTrigger("bossMove");
+            }
         if (collision.gameObject.CompareTag("defense"))
         {
             attacking = false;
@@ -169,7 +180,10 @@ public class ZombieMovement : MonoBehaviour
             if(health <= 0)
             {
                 if (zombieAnimator != null){
-                    zombieAnimator.SetTrigger("AxeDead"); // Trigger death animation
+                    zombieAnimator.SetTrigger("basicZombieDead"); // Trigger death animation
+                }
+                if (bossAnimator != null){
+                    bossAnimator.SetTrigger("bossDead"); // Trigger death animation
                 }
                 StartCoroutine(HandleDeath()); // Wait before destroying
             }
