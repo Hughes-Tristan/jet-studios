@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: Bomb
   prefab: {fileID: 3663233228904864774, guid: da162e8a2f6ef3f4fa907db35203afc7, type: 3}
-  price: 50
+  price: 100
   health: 150
