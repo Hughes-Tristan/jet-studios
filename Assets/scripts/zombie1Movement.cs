@@ -1,6 +1,6 @@
 
-// Developer(s): Evita Kanaan, Tristan Hughes
-// Last Updated: 11-21-24
+// Developer(s): Evita Kanaan, Tristan Hughes, Jazzel Radaza
+// Last Updated: 12-06-24
 // Enemy Movement Class
 
 // the intended purpose of this class is to control enemy movement.
@@ -12,6 +12,8 @@ using UnityEngine;
 
 public class ZombieMovement : MonoBehaviour
 {
+
+    private Animator zombieAnimator;
     public float moveSpeed = 2f;
     private Rigidbody2D rb;
     private bool attacking = false;
@@ -42,6 +44,7 @@ public class ZombieMovement : MonoBehaviour
 
     void Start()
     {
+        zombieAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component that's attached to enemy
         audioSource = GetComponent<AudioSource>();
 
@@ -58,6 +61,9 @@ public class ZombieMovement : MonoBehaviour
     void Update()
     {
         if (!attacking){
+            if(zombieAnimator != null){
+                zombieAnimator.SetTrigger("basicZombieMove");
+            }
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         } 
 
@@ -91,7 +97,10 @@ public class ZombieMovement : MonoBehaviour
     // this function is a special event function provided by the monobehavior base class
     // if the enemy collides with a defense then it starts attacking
     void OnCollisionEnter2D(Collision2D collision)
-    {
+    {   
+        if(zombieAnimator != null){
+            zombieAnimator.SetTrigger("basicZombieAttack");
+        }
         if (collision.gameObject.CompareTag("defense"))
         {
             attacking = true;
@@ -102,7 +111,10 @@ public class ZombieMovement : MonoBehaviour
     // this function is a special event function provided by the monobehavior base class
     // if the enemy is finishing the collision it will stop attack
     void OnCollisionExit2D(Collision2D collision)
-    {
+    {   
+        if(zombieAnimator != null){
+            zombieAnimator.SetTrigger("basicZombieMove");
+        }
         if (collision.gameObject.CompareTag("defense"))
         {
             attacking = false;
@@ -116,19 +128,24 @@ public class ZombieMovement : MonoBehaviour
         while(defense != null && attacking)
         {
             temporaryDefense defenseComponent = defense.GetComponent<temporaryDefense>();
+            axe_knight_attack axeKnightComponent = defense.GetComponent<axe_knight_attack>();
             GameOverObject gameEnder = defense.GetComponent<GameOverObject>();
-            if (defenseComponent == null)
-            {
-                Debug.Log("no defense found");
-                if (gameEnder != null)
-                {
-                    gameEnder.takeDamage(damageDealt);
-                }
-                
-            } else
-            {
+
+            if (defenseComponent != null){
+                Debug.Log("Zombie attacking archers");
                 defenseComponent.takeDamage(damageDealt);
             }
+            else if (axeKnightComponent != null){
+                Debug.Log("Zombie attacking soldier");
+                axeKnightComponent.TakeDamage(damageDealt);
+            }
+            else{
+                Debug.Log("No valid defense found");
+                if (gameEnder != null){
+                    gameEnder.takeDamage(damageDealt);
+                }
+            }
+            
             yield return new WaitForSeconds(1f);
         }
     }
@@ -151,13 +168,38 @@ public class ZombieMovement : MonoBehaviour
             health = health - damageTaken;
             if(health <= 0)
             {
-                onCharDeath();
+                if (zombieAnimator != null){
+                    zombieAnimator.SetTrigger("AxeDead"); // Trigger death animation
+                }
+                StartCoroutine(HandleDeath()); // Wait before destroying
             }
             else
             {
                 StartCoroutine(hitReaction());
             }
         }
+    }
+
+    // Coroutine to handle delay before destruction
+    private IEnumerator HandleDeath()
+    {
+        // Get the length of the animation clip (optional)
+        float animationLength = 1.5f; // Replace with your animation's duration
+        if (zombieAnimator != null)
+        {
+            AnimatorStateInfo stateInfo = zombieAnimator.GetCurrentAnimatorStateInfo(0);
+            animationLength = stateInfo.length; // Dynamically fetch animation length
+        }
+
+        yield return new WaitForSeconds(animationLength); // Wait for the animation to finish
+        DestroyZombie(); // Destroy the zombie
+    }
+
+    // Handles soldier death
+    private void DestroyZombie()
+    {
+        Debug.Log("Soldier has been destroyed.");
+        Destroy(gameObject); // Remove zombie from the game
     }
 
     /*
