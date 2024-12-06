@@ -16,9 +16,11 @@ public class temporaryDefense : MonoBehaviour
     public float health = 6.0f;
     public float projectileFirerate = 1f;
     public float nextShot;
+    public bool isIndestructible = false;
 
     public Transform projectileSpawnpoint;
     public GameObject projectilePrefab;
+
 
 
     public void initializeHealth(float healthAmount)
@@ -59,10 +61,13 @@ public class temporaryDefense : MonoBehaviour
     // if the health is less than or equal to 0 then destroy the object
     public void takeDamage(float amount)
     {
-        health -= amount;
-        if (health <= 0)
+        if (!isIndestructible)
         {
-            onCharDeath();
+            health -= amount;
+            if (health <= 0)
+            {
+                onCharDeath();
+            }
         }
     }
 }

@@ -35,6 +35,12 @@ public class BombWeapon : MonoBehaviour
         {
             if (collider.CompareTag("Zombie"))
             {
+                // this part checks to see if the zombie is a giant or not to account for boss challenge kills
+                ZombieMovement zombieObject = collider.GetComponent<ZombieMovement>();
+                if (zombieObject != null && zombieObject.isGiant)
+                {
+                    GameManager.Instance.bossKillCount();
+                }
                 Destroy(collider.gameObject);  // Destroy the zombie
             }
         }

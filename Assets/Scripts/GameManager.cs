@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     void setWinScreen()
     {
+        Debug.Log("win screen loaded");
         SceneManager.LoadScene("WinScreen");
     }
 }
