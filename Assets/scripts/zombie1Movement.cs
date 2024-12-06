@@ -1,6 +1,6 @@
 
-// Developer(s): Evita Kanaan, Tristan Hughes
-// Last Updated: 11-21-24
+// Developer(s): Evita Kanaan, Tristan Hughes, Jazzel Radaza
+// Last Updated: 12-06-24
 // Enemy Movement Class
 
 // the intended purpose of this class is to control enemy movement.
@@ -108,19 +108,24 @@ public class ZombieMovement : MonoBehaviour
         while(defense != null && attacking)
         {
             temporaryDefense defenseComponent = defense.GetComponent<temporaryDefense>();
+            axe_knight_attack axeKnightComponent = defense.GetComponent<axe_knight_attack>();
             GameOverObject gameEnder = defense.GetComponent<GameOverObject>();
-            if (defenseComponent == null)
-            {
-                Debug.Log("no defense found");
-                if (gameEnder != null)
-                {
-                    gameEnder.takeDamage(damageDealt);
-                }
-                
-            } else
-            {
+
+            if (defenseComponent != null){
+                Debug.Log("Zombie attacking archers");
                 defenseComponent.takeDamage(damageDealt);
             }
+            else if (axeKnightComponent != null){
+                Debug.Log("Zombie attacking soldier");
+                axeKnightComponent.TakeDamage(damageDealt);
+            }
+            else{
+                Debug.Log("No valid defense found");
+                if (gameEnder != null){
+                    gameEnder.takeDamage(damageDealt);
+                }
+            }
+            
             yield return new WaitForSeconds(1f);
         }
     }
