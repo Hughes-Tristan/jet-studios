@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61bd25a5dba6ae4e857a7e4ce34ceeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
+  health: 150
   projectileFirerate: 1
   nextShot: 0
   isIndestructible: 1
