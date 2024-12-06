@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // TextMeshPro
+using TMPro; 
 
 public class WaveManager : MonoBehaviour
 {
