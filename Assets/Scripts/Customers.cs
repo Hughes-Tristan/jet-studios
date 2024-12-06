@@ -62,10 +62,13 @@ public class Customers : MonoBehaviour
     {
         if (isSitting)
         {
+
             if (item == itemOrdered)
             {
                 waveManager.EarnMoney(20);
-                
+
+                //when customer recieves order, player earns money and sfx coin is triggered
+                SFXManager.Instance.PlayMoneySound();
 
                 CustomerManager.instance.seatAvailable(seatAssigned);
                 Vector3 exitPos = exitpoint.position;
@@ -85,6 +88,7 @@ public class Customers : MonoBehaviour
             return false;
         }
     }
+
 
 
     // this is a form of a setter function that assigns the seat the the customer
