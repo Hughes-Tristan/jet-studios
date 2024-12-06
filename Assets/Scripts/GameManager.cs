@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance {  get; private set; }
+    public static GameManager Instance { get; private set; }
 
     public int bossKills = 0;
     //public GameObject winScreen;
@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
     public void bossKillCount()
     {
         bossKills++;
-        if(bossKills >= 10) {
+        if (bossKills >= 10)
+        {
             setWinScreen();
         }
     }
