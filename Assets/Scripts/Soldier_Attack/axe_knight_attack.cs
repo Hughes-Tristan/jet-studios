@@ -108,7 +108,7 @@ public class axe_knight_attack : MonoBehaviour
     private IEnumerator HandleDeath()
     {
         // Get the length of the animation clip (optional)
-        float animationLength = 1.0f; // Replace with your animation's duration
+        float animationLength = 1.5f; // Replace with your animation's duration
         if (axeAnimator != null)
         {
             AnimatorStateInfo stateInfo = axeAnimator.GetCurrentAnimatorStateInfo(0);
