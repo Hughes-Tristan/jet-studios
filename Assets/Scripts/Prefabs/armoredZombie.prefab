@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7650252855366273053}
   m_Layer: 6
   m_Name: armoredZombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,6 +178,8 @@ MonoBehaviour:
   damageDealt: 15
   isArmored: 1
   isArmorBroken: 0
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
   flashTime: 0.2
 --- !u!1 &2919633469744648800
 GameObject:
