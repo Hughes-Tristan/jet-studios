@@ -14,11 +14,14 @@ using UnityEngine;
 public class CustomerManager : MonoBehaviour
 {
     public static CustomerManager instance { get; private set; }
+    public Transform spawn;
+    public Transform exit;
 
     [SerializeField] private GameObject customer;
     [SerializeField] private Transform[] seatPos;
     [SerializeField] private Transform linePos;
     [SerializeField] private int lineLength = 3;
+
 
     private Queue<GameObject> customerLine = new Queue<GameObject>();
     private List<Transform> seatsAvailable = new List<Transform>();
@@ -56,7 +59,11 @@ public class CustomerManager : MonoBehaviour
     {
         GameObject spawnedCustomer;
         spawnedCustomer = Instantiate(customer);
-        spawnedCustomer.SetActive(false);
+        //spawnedCustomer.SetActive(false);
+        Customers customers;
+        customers = spawnedCustomer.GetComponent<Customers>();
+        spawnedCustomer.transform.position = spawn.position;
+        customers.exitpoint = exit;
         customerLine.Enqueue(spawnedCustomer);
         Debug.Log("Customer Spawned!");
         seatCustomer();
@@ -68,19 +75,33 @@ public class CustomerManager : MonoBehaviour
     // it takes the next customer plus the first seat and assigns that seat to the customer
     public void seatCustomer()
     {
+        bool canSeat = false;
         while(seatsAvailable.Count > 0 && customerLine.Count > 0)
         {
             GameObject customerNext;
-            customerNext = customerLine.Dequeue();
+            Customers customers;
             Transform seat;
+
+
+            canSeat = true;
+            customerNext = customerLine.Dequeue();
             seat = seatsAvailable[0];
             
             seatsAvailable.RemoveAt(0);
-            customerNext.transform.position = seat.position;
-            customerNext.GetComponent<Customers>().assignSeat(seat);
-            customerNext.SetActive(true);
+            customers = customerNext.GetComponent<Customers>();
+
+            customers.assignSeat(seat);
+            customers.changePos(seat.position);
+            //customerNext.transform.position = seat.position;
+            //customerNext.GetComponent<Customers>().assignSeat(seat);
+            //customerNext.SetActive(true);
+            
         }
-        updateLine();
+        if (canSeat)
+        {
+            updateLine();
+        }
+        
     }
 
     // this function is used to set a seat to available and seat a new customer
@@ -100,8 +121,9 @@ public class CustomerManager : MonoBehaviour
         {
             Vector3 customerPos;
             customerPos = linePos.position + new Vector3(i * 1.5f, 0, 0);
-            customer.transform.position = customerPos;
-            customer.SetActive(true);
+            Customers customers;
+            customers = customer.GetComponent<Customers>();
+            customers.changePos(customerPos);
             i++;
         }
     }
@@ -117,7 +139,7 @@ public class CustomerManager : MonoBehaviour
         {
             float randomizedTime;
             float countLine;
-            randomizedTime = Random.Range(2, 12);
+            randomizedTime = Random.Range(1, 5);
             yield return new WaitForSeconds(randomizedTime);
             countLine = customerLine.Count;
             if (lineLength > countLine)

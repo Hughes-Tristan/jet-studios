@@ -13,12 +13,12 @@ using UnityEngine.SceneManagement;
 
 public class GameOverObject : MonoBehaviour
 {
-    public float health = 6.0f;
+    public float health = 40.0f;
 
     // this function loads the game over scene when it is destroyed
     void GameOver()
     {
-        SceneManager.LoadScene("Game Over Scene");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     // this function subtracts the damage amount from the health
