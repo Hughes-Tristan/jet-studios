@@ -714,14 +714,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: 4817655f03ead1f4398d66e5ed14aae1, type: 3}
-  spawnInterval: 5
+  spawnInterval: 13
   spawnPoints:
   - {fileID: 815287665}
   - {fileID: 946990287}
   - {fileID: 1156764029}
   - {fileID: 328960864}
   - {fileID: 256691008}
-  spawnDelay: 1
+  spawnDelay: 120
 --- !u!114 &113335662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Zombies:'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2708,7 +2708,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 56.95081, y: 0, z: 18.17876, w: 0}
+  m_margin: {x: 56.95081, y: 0, z: -36.390804, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
