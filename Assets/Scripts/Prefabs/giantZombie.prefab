@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1518495269
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -8888697765149574291, guid: fe50fad92c135fe4f872e6435ee5e01c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -172,11 +172,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.14
-  health: 260
+  health: 140
   maxHealth: 0
   damageDealt: 21
   isArmored: 0
   isArmorBroken: 0
+
   hitSound: {fileID: 0}
   deathSound: {fileID: 0}
   flashTime: 0.2
