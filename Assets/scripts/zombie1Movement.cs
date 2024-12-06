@@ -22,12 +22,14 @@ public class ZombieMovement : MonoBehaviour
 
     public bool isArmored = false;
     public bool isArmorBroken = false;
+    public bool isGiant = false;
 
     private ZombieSpawner zombieSpawner;
 
     private AudioSource audioSource;
     public AudioClip hitSound;
     public AudioClip deathSound;
+    
 
 
     //public float spawnDelay = 0.0f;
@@ -76,6 +78,10 @@ public class ZombieMovement : MonoBehaviour
     // this function destroys the game object to simulate a death
     public void onCharDeath()
     {
+        if (isGiant)
+        {
+            GameManager.Instance.bossKillCount();
+        }
         //audioSource.PlayOneShot(deathSound);
         Destroy(gameObject);
     }
@@ -127,7 +133,7 @@ public class ZombieMovement : MonoBehaviour
 
     public void takeDamage(float damageTaken)
     {
-        audioSource.PlayOneShot(hitSound);
+        //audioSource.PlayOneShot(hitSound);
         if (!isArmorBroken && isArmored)
         {
             health -= damageTaken * 0.5f;

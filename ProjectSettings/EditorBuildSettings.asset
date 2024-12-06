@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TH_Development 2.unity
     guid: 41f83a4a6bd3d384795f09f2e3bfc0cb
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: da105e1a96a04ee4c842349f821d83d7
   m_configObjects: {}
