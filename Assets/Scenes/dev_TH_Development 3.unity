@@ -552,8 +552,8 @@ GameObject:
   - component: {fileID: 113335660}
   - component: {fileID: 113335661}
   - component: {fileID: 113335662}
-  - component: {fileID: 113335664}
   - component: {fileID: 113335663}
+  - component: {fileID: 113335664}
   - component: {fileID: 113335665}
   - component: {fileID: 113335666}
   - component: {fileID: 113335667}
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: 073ad2134593e9f4db302cb6b8ef31ae, type: 3}
-  spawnInterval: 3.8
+  spawnInterval: 2.7
   spawnPoints:
   - {fileID: 1659756687}
   - {fileID: 1789374303}
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: fc21a7db884121340be7ce4adf2f576c, type: 3}
-  spawnInterval: 4.5
+  spawnInterval: 3.2
   spawnPoints:
   - {fileID: 1659756687}
   - {fileID: 1789374303}
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: 4817655f03ead1f4398d66e5ed14aae1, type: 3}
-  spawnInterval: 13
+  spawnInterval: 11
   spawnPoints:
   - {fileID: 815287665}
   - {fileID: 946990287}
@@ -676,14 +676,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: 073ad2134593e9f4db302cb6b8ef31ae, type: 3}
-  spawnInterval: 3
+  spawnInterval: 2
   spawnPoints:
   - {fileID: 1659756687}
   - {fileID: 1789374303}
   - {fileID: 1094744499}
   - {fileID: 817350299}
   - {fileID: 44054790}
-  spawnDelay: 155
+  spawnDelay: 145
 --- !u!114 &113335663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,7 +704,7 @@ MonoBehaviour:
   - {fileID: 1094744499}
   - {fileID: 817350299}
   - {fileID: 44054790}
-  spawnDelay: 230
+  spawnDelay: 210
 --- !u!114 &113335664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,14 +718,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: 4817655f03ead1f4398d66e5ed14aae1, type: 3}
-  spawnInterval: 9
+  spawnInterval: 7
   spawnPoints:
   - {fileID: 815287665}
   - {fileID: 946990287}
   - {fileID: 1156764029}
   - {fileID: 328960864}
   - {fileID: 256691008}
-  spawnDelay: 170
+  spawnDelay: 150
 --- !u!114 &113335665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,14 +739,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: fc21a7db884121340be7ce4adf2f576c, type: 3}
-  spawnInterval: 3
+  spawnInterval: 2.6
   spawnPoints:
   - {fileID: 1659756687}
   - {fileID: 1789374303}
   - {fileID: 1094744499}
   - {fileID: 817350299}
   - {fileID: 44054790}
-  spawnDelay: 230
+  spawnDelay: 100
 --- !u!114 &113335666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: 073ad2134593e9f4db302cb6b8ef31ae, type: 3}
-  spawnInterval: 3
+  spawnInterval: 1
   spawnPoints:
   - {fileID: 1659756687}
   - {fileID: 1789374303}
@@ -1480,51 +1480,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 963978880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &425818949
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 425818950}
-  - component: {fileID: 425818951}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &425818950
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425818949}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 852617212}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &425818951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425818949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5a481a1ff74e440a50f6ed3822a933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossKills: 0
 --- !u!1 &480033061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,7 +2579,6 @@ Transform:
   - {fileID: 898258411}
   - {fileID: 195376303}
   - {fileID: 113335657}
-  - {fileID: 425818950}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &861024095
