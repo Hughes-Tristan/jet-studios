@@ -55,6 +55,6 @@ public class GameManager : MonoBehaviour
 
     private void UpdateZombieCounter()
     {
-        zombieCounterText.text = $"Zombies: {zombieCount} / 5";
+        //zombieCounterText.text = $"Zombies: {zombieCount} / 5";
     }
 }
