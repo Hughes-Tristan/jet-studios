@@ -15,7 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Scenes/LevelSelect.unity
     guid: 8d911a9c5047347c19794c78028fb1dd
   - enabled: 1
-    path: Assets/Scenes/Main Scenes/Beta_Final_Build.unity
+    path: Assets/Scenes/Main Scenes/Final_Level_1.unity
+    guid: 2df8175805a3f4463aa029b36d12ad8a
+  - enabled: 1
+    path: Assets/Scenes/Main Scenes/Final_Level_2.unity
     guid: 91eac14e0858d1c4bb3ba1eb43ac89b8
   - enabled: 1
     path: Assets/Scenes/Main Scenes/WinScreen.unity
