@@ -36,8 +36,12 @@ public class GameManager : MonoBehaviour
         bossKills++;
         increaseZombieCount(1);
         if (bossKills >= 5)
-        {
+        {   // Unlock Level 2
+            PlayerPrefs.SetInt("Level2Unlocked", 1);
+            PlayerPrefs.Save();
+            Debug.Log("Level 2 unlocked!");
             setWinScreen();
+
         }
     }
 
