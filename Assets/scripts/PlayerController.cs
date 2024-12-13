@@ -16,7 +16,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // public player controller  variables
-    public float moveSpeed = 5;
+    public float moveSpeed = 7;
     public SpriteRenderer itemHeldRender;
 
     // private player contorller variables
