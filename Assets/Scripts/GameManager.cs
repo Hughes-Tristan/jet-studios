@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public int bossKills = 0;
     //public GameObject winScreen;
-    public TMP_Text zombieCounterText;
+    public TMP_Text bossCounterText;
     private int zombieCount = 0;
 
     void Awake()
@@ -29,12 +29,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateZombieCounter();
+        UpdateBossCounter();
     }
 
     public void bossKillCount()
     {
         bossKills++;
         increaseZombieCount(1);
+        UpdateBossCounter();
         if (bossKills >= 5)
         {   // Unlock Level 2
             PlayerPrefs.SetInt("Level2Unlocked", 1);
@@ -60,5 +62,14 @@ public class GameManager : MonoBehaviour
     private void UpdateZombieCounter()
     {
         //zombieCounterText.text = $"Zombies: {zombieCount} / 5";
+    }
+
+    private void UpdateBossCounter()
+    {
+        // Update the boss counter display
+        if (bossCounterText != null)
+        {
+            bossCounterText.text = $"Giant Kills: {bossKills}/5";
+        }
     }
 }

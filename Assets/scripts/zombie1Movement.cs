@@ -87,7 +87,7 @@ public class ZombieMovement : MonoBehaviour
     }
 
     // this function destroys the game object to simulate a death
-    public void onCharDeath()
+    virtual public void onCharDeath()
     {
         Debug.Log("character death");
         if (isGiant)
@@ -206,7 +206,7 @@ public class ZombieMovement : MonoBehaviour
         }
 
         yield return new WaitForSeconds(animationLength); // Wait for the animation to finish
-        DestroyZombie(); // Destroy the zombie
+        onCharDeath(); // Destroy the zombie
     }
 
     // Handles soldier death
