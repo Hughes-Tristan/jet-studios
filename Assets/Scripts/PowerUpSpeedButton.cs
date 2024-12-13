@@ -1,4 +1,5 @@
-//Author: Evita Kanaan
+//Author: Evita Kanaan and Jazzel Radaza
+// Last Modified: 2024-12-13 by Jazzel (added animation for PowerUpButton)
 //Purpose: speed boost power up button. pops up after 30 seconds, lasts for 15 sec
 
 using UnityEngine;

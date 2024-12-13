@@ -1,45 +1,52 @@
+// Author: Jazzel Radaza
+// Created: 2024-11-13
+// Last Modified: 2024-12-05 by Jazzel (refactored death logic)
+// Description: Manages the Axe Knight's combat behavior, including attacking zombies in range, taking damage, and handling death animations.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class axe_knight_attack : MonoBehaviour
 {
-    private Animator axeAnimator;
+    private Animator axeAnimator; // Animator for controlling attack and idle animations
 
     [Header("Soldier Attributes")]
-    [SerializeField] private float health = 50f; // Soldier's initial health
-    [SerializeField] private float attackDamage = 30f; // Damage dealt to enemies
+    [SerializeField] private float health = 50f; // Axe Knight's initial health
+    [SerializeField] private float attackDamage = 35f; // Damage dealt to zombies
     [SerializeField] private float attackRate = 0.5f; // Time between attacks
 
-    private List<ZombieMovement> zombiesInRange = new List<ZombieMovement>(); // List of zombies in range
-    private bool isAttacking = false; // To check if the soldier is already attacking
+    private List<ZombieMovement> zombiesInRange = new List<ZombieMovement>(); // List of zombies within attack range
+    private bool isAttacking = false; // Indicates whether the knight is currently attacking
 
-    public float Health => health; // Property for read-only health access
+    public float Health => health; // Read-only property to access health
 
-    // Method to set health (controlled)
+    // Sets the Axe Knight's health, ensuring it doesn't drop below 0
     public void SetHealth(float value)
     {
-        health = Mathf.Max(0, value); // Prevent health from dropping below 0
+        health = Mathf.Max(0, value);
     }
 
-    void Start(){
-        axeAnimator = GetComponent<Animator>();
+    void Start()
+    {
+        axeAnimator = GetComponent<Animator>(); // Initialize the animator
     }
 
-
-    // Triggered when an enemy enters the soldier's attack range
+    // Triggered when a zombie enters the knight's attack range
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(axeAnimator != null){
-            axeAnimator.SetTrigger("AxeAttack");
+        if (axeAnimator != null)
+        {
+            axeAnimator.SetTrigger("AxeAttack"); // Trigger attack animation
         }
+
         ZombieMovement enemy = collision.GetComponent<ZombieMovement>();
         if (enemy != null && !zombiesInRange.Contains(enemy))
         {
             Debug.Log("Zombie detected and added to the list.");
-            zombiesInRange.Add(enemy); // Add the zombie to the list
+            zombiesInRange.Add(enemy); // Add zombie to the attack list
 
-            // Start attacking if not already attacking
+            // Start attacking if not already doing so
             if (!isAttacking)
             {
                 StartCoroutine(Attack());
@@ -47,21 +54,23 @@ public class axe_knight_attack : MonoBehaviour
         }
     }
 
-    // Triggered when an enemy leaves the soldier's attack range
+    // Triggered when a zombie exits the knight's attack range
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(axeAnimator != null){
-            axeAnimator.SetTrigger("AxeIdle");
+        if (axeAnimator != null)
+        {
+            axeAnimator.SetTrigger("AxeIdle"); // Switch back to idle animation
         }
+
         ZombieMovement enemy = collision.GetComponent<ZombieMovement>();
         if (enemy != null && zombiesInRange.Contains(enemy))
         {
             Debug.Log("Zombie left the range and removed from the list.");
-            zombiesInRange.Remove(enemy); // Remove the zombie from the list
+            zombiesInRange.Remove(enemy); // Remove zombie from the attack list
         }
     }
 
-    // Coroutine to handle continuous attacking
+    // Coroutine for continuously attacking zombies in range
     private IEnumerator Attack()
     {
         isAttacking = true;
@@ -72,9 +81,9 @@ public class axe_knight_attack : MonoBehaviour
             if (target != null)
             {
                 Debug.Log("Soldier attacking zombie: " + target.name);
-                target.takeDamage(attackDamage); // Deal damage to the zombie
+                target.takeDamage(attackDamage); // Inflict damage on the zombie
 
-                // Remove the zombie if it dies
+                // Remove the zombie from the list if it dies
                 if (target.health <= 0f)
                 {
                     Debug.Log("Zombie " + target.name + " died and removed from the list.");
@@ -85,45 +94,44 @@ public class axe_knight_attack : MonoBehaviour
             yield return new WaitForSeconds(attackRate); // Wait before the next attack
         }
 
-        isAttacking = false; // Stop attacking when there are no zombies in range
+        isAttacking = false; // Stop attacking when no zombies are in range
     }
 
-    // Handles taking damage from a zombie
-    public void TakeDamage(float damageTaken){
-        SetHealth(health - damageTaken); // Adjust health using the setter
-
+    // Handles the knight taking damage from zombies
+    public void TakeDamage(float damageTaken)
+    {
+        SetHealth(health - damageTaken); // Reduce health
         Debug.Log("Soldier took damage. Current health: " + health);
 
-        if (health <= 0f){
+        if (health <= 0f)
+        {
             Debug.Log("Soldier has died.");
             if (axeAnimator != null)
             {
                 axeAnimator.SetTrigger("AxeDead"); // Trigger death animation
             }
-            StartCoroutine(HandleDeath()); // Wait before destroying
+            StartCoroutine(HandleDeath()); // Handle the death process
         }
     }
 
-    // Coroutine to handle delay before destruction
+    // Coroutine to delay the knight's destruction for death animation
     private IEnumerator HandleDeath()
     {
-        // Get the length of the animation clip (optional)
-        float animationLength = 1.5f; // Replace with your animation's duration
+        float animationLength = 1.5f; // Default duration for death animation
         if (axeAnimator != null)
         {
             AnimatorStateInfo stateInfo = axeAnimator.GetCurrentAnimatorStateInfo(0);
-            animationLength = stateInfo.length; // Dynamically fetch animation length
+            animationLength = stateInfo.length; // Get actual animation length
         }
 
-        yield return new WaitForSeconds(animationLength); // Wait for the animation to finish
-        DestroyKnight(); // Destroy the knight
+        yield return new WaitForSeconds(animationLength); // Wait for animation to finish
+        DestroyKnight(); // Remove the knight from the game
     }
 
-    // Handles soldier death
+    // Destroys the knight object
     private void DestroyKnight()
     {
         Debug.Log("Soldier has been destroyed.");
-        Destroy(gameObject); // Remove soldier from the game
+        Destroy(gameObject);
     }
-
 }
