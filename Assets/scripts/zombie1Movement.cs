@@ -87,7 +87,7 @@ public class ZombieMovement : MonoBehaviour
     }
 
     // this function destroys the game object to simulate a death
-    public void onCharDeath()
+    virtual public void onCharDeath()
     {
         Debug.Log("character death");
         if (isGiant)
