@@ -8,7 +8,7 @@ public class axe_knight_attack : MonoBehaviour
 
     [Header("Soldier Attributes")]
     [SerializeField] private float health = 50f; // Soldier's initial health
-    [SerializeField] private float attackDamage = 20f; // Damage dealt to enemies
+    [SerializeField] private float attackDamage = 30f; // Damage dealt to enemies
     [SerializeField] private float attackRate = 0.5f; // Time between attacks
 
     private List<ZombieMovement> zombiesInRange = new List<ZombieMovement>(); // List of zombies in range
