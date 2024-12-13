@@ -1,3 +1,6 @@
+//Author: Evita Kanaan
+//Purpose: to be used as a tmt/laser counter to see the intact bombs and lasers
+
 using UnityEngine;
 using TMPro;
 
