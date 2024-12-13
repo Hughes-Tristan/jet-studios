@@ -206,7 +206,7 @@ public class ZombieMovement : MonoBehaviour
         }
 
         yield return new WaitForSeconds(animationLength); // Wait for the animation to finish
-        DestroyZombie(); // Destroy the zombie
+        onCharDeath(); // Destroy the zombie
     }
 
     // Handles soldier death
