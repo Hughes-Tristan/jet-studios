@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7650252855366273053}
   - component: {fileID: 3591115927037621389}
   m_Layer: 6
-  m_Name: zombie
+  m_Name: speedyZombie
   m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 2.2, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -172,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da74202587fde1443adb1903ed743431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.4
+  moveSpeed: 1.25
   attacking: 0
-  health: 41
+  health: 7
   maxHealth: 0
   damageDealt: 11
   isArmored: 0

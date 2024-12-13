@@ -68,11 +68,11 @@ public class Customers : MonoBehaviour
                 waveManager.EarnMoney(20);
 
                 //when customer recieves order, player earns money and sfx coin is triggered
-                SFXManager.Instance.PlayMoneySound();
+                //SFXManager.Instance.PlayMoneySound();
 
                 CustomerManager.instance.seatAvailable(seatAssigned);
                 Vector3 exitPos = exitpoint.position;
-                //itemManager.playMoneySound();
+                itemManager.playMoneySound();
                 leave(exitPos);
 
                 //Destroy(gameObject);
