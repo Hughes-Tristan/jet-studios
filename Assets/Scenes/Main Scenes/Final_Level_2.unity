@@ -607,14 +607,14 @@ GameObject:
   m_Component:
   - component: {fileID: 113335657}
   - component: {fileID: 113335658}
-  - component: {fileID: 113335659}
-  - component: {fileID: 113335660}
-  - component: {fileID: 113335661}
   - component: {fileID: 113335662}
+  - component: {fileID: 113335660}
+  - component: {fileID: 113335666}
+  - component: {fileID: 113335659}
+  - component: {fileID: 113335661}
   - component: {fileID: 113335664}
   - component: {fileID: 113335663}
   - component: {fileID: 113335665}
-  - component: {fileID: 113335666}
   - component: {fileID: 113335667}
   m_Layer: 0
   m_Name: zombiespawner
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 563328872337749452, guid: 073ad2134593e9f4db302cb6b8ef31ae, type: 3}
-  spawnInterval: 3
+  spawnInterval: 7
   spawnPoints:
   - {fileID: 1659756687}
   - {fileID: 1789374303}
@@ -671,8 +671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896cfdf53d3d76488989f0361d0ebf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 563328872337749452, guid: 8a272f9c88b141e4394c849f7a46c893, type: 3}
-  spawnInterval: 5
+  zombiePrefab: {fileID: 563328872337749452, guid: 05c8c1cfc3fb6814e8ad5c4ab2135087, type: 3}
+  spawnInterval: 9
   spawnPoints:
   - {fileID: 1441998843}
   - {fileID: 413741020}
@@ -692,14 +692,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896cfdf53d3d76488989f0361d0ebf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 563328872337749452, guid: fc21a7db884121340be7ce4adf2f576c, type: 3}
-  spawnInterval: 4
+  zombiePrefab: {fileID: 563328872337749452, guid: 00c89db9bd564d141ba46568faa88e5d, type: 3}
+  spawnInterval: 9
   spawnPoints:
-  - {fileID: 543277062}
-  - {fileID: 215719854}
-  - {fileID: 1414281042}
-  - {fileID: 695252588}
-  - {fileID: 1949279297}
+  - {fileID: 1659756687}
+  - {fileID: 1789374303}
+  - {fileID: 1094744499}
+  - {fileID: 817350299}
+  - {fileID: 44054790}
   spawnDelay: 55
 --- !u!114 &113335661
 MonoBehaviour:
@@ -713,7 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896cfdf53d3d76488989f0361d0ebf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 563328872337749452, guid: 4817655f03ead1f4398d66e5ed14aae1, type: 3}
+  zombiePrefab: {fileID: 563328872337749452, guid: 11f1226755847b749af14d3f9ec00840, type: 3}
   spawnInterval: 13
   spawnPoints:
   - {fileID: 815287665}
@@ -734,15 +734,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896cfdf53d3d76488989f0361d0ebf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 563328872337749452, guid: 073ad2134593e9f4db302cb6b8ef31ae, type: 3}
-  spawnInterval: 3
+  zombiePrefab: {fileID: 563328872337749452, guid: 72a1e8a60be91204d8896c8b5e6c6f2d, type: 3}
+  spawnInterval: 8
   spawnPoints:
   - {fileID: 1659756687}
   - {fileID: 1789374303}
   - {fileID: 1094744499}
   - {fileID: 817350299}
   - {fileID: 44054790}
-  spawnDelay: 155
+  spawnDelay: 40
 --- !u!114 &113335663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +763,7 @@ MonoBehaviour:
   - {fileID: 1094744499}
   - {fileID: 817350299}
   - {fileID: 44054790}
-  spawnDelay: 200
+  spawnDelay: 250
 --- !u!114 &113335664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,8 +776,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896cfdf53d3d76488989f0361d0ebf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 563328872337749452, guid: 4817655f03ead1f4398d66e5ed14aae1, type: 3}
-  spawnInterval: 9
+  zombiePrefab: {fileID: 563328872337749452, guid: 11f1226755847b749af14d3f9ec00840, type: 3}
+  spawnInterval: 13
   spawnPoints:
   - {fileID: 815287665}
   - {fileID: 946990287}
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896cfdf53d3d76488989f0361d0ebf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 563328872337749452, guid: fc21a7db884121340be7ce4adf2f576c, type: 3}
+  zombiePrefab: {fileID: 563328872337749452, guid: 00c89db9bd564d141ba46568faa88e5d, type: 3}
   spawnInterval: 3
   spawnPoints:
   - {fileID: 543277062}
@@ -805,7 +805,7 @@ MonoBehaviour:
   - {fileID: 1414281042}
   - {fileID: 695252588}
   - {fileID: 1949279297}
-  spawnDelay: 200
+  spawnDelay: 250
 --- !u!114 &113335666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,15 +818,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2896cfdf53d3d76488989f0361d0ebf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 563328872337749452, guid: 073ad2134593e9f4db302cb6b8ef31ae, type: 3}
-  spawnInterval: 3
+  zombiePrefab: {fileID: 563328872337749452, guid: 527bae665dbadfd468cb0fb71f707840, type: 3}
+  spawnInterval: 30
   spawnPoints:
   - {fileID: 1659756687}
   - {fileID: 1789374303}
   - {fileID: 1094744499}
   - {fileID: 817350299}
   - {fileID: 44054790}
-  spawnDelay: 250
+  spawnDelay: 90
 --- !u!82 &113335667
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3937,7 +3937,7 @@ Transform:
   m_GameObject: {fileID: 1045312593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4322222, y: -2.5, z: 0}
+  m_LocalPosition: {x: -1.4322222, y: -1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
