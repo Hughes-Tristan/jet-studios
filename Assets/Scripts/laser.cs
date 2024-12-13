@@ -1,3 +1,6 @@
+//Author: Evita Kanaan
+//Purpose: to be used as a laser/tmt mechanic
+
 using UnityEngine;
 
 public class Laser : MonoBehaviour

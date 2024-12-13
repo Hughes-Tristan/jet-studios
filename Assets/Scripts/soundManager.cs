@@ -1,3 +1,6 @@
+//Author: Evita Kanaan
+//Purpose: SFX Manager (coin sound when customers' order received)
+
 using UnityEngine;
 
 public class SFXManager : MonoBehaviour

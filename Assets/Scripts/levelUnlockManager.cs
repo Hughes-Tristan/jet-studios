@@ -1,3 +1,6 @@
+//Author: Evita Kanaan
+//Purpose: check if level 2 is unlocked 
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;

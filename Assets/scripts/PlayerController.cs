@@ -1,10 +1,11 @@
 
-// Developer(s): Tristan Hughes
+// Developer(s): Tristan Hughes and Evita Kanaan
 // Last Updated: 11-21-24
 // Player Controller Script (controls player movements)
 
 // the intended purpose of this class is to manage player behavior.
 // it also provides methods for
+// includes functions for speed boost power up
 
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private WaveManager waveManager;
     private Items itemHeld;
     private bool isPlayerMoving = false;
+    private float originalSpeed;
+    private bool isSpeedBoostActive = false;
 
     // player boundaries
     public float minBoundaryX = -10.0f;
@@ -225,4 +228,27 @@ public class PlayerController : MonoBehaviour
        
         isPlayerMoving = true;
     }
+
+    // Method to apply the speed boost
+    public void ApplySpeedBoost(float boostAmount, float duration)
+    {
+        if (!isSpeedBoostActive) // Ensure that the boost does not stack
+        {
+            originalSpeed = moveSpeed;  // Save the current speed
+            moveSpeed *= boostAmount;  // Increase the speed by the boost amount
+
+            // Start the coroutine to reset the speed after the specified duration
+            StartCoroutine(ResetSpeedAfterDuration(duration));
+        }
+    }
+
+    // Coroutine to reset the player's speed after a set duration
+    private IEnumerator ResetSpeedAfterDuration(float duration)
+    {
+        isSpeedBoostActive = true;
+        yield return new WaitForSeconds(duration);  // Wait for the specified duration
+        moveSpeed = originalSpeed;  // Reset the speed to its original value
+        isSpeedBoostActive = false;
+    }
+
 }

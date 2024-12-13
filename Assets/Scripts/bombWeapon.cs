@@ -1,3 +1,6 @@
+//Author: Evita Kanaan
+//Purpose: Bomb buyable power up that kills zombie around a certain radius
+
 using UnityEngine;
 
 public class BombWeapon : MonoBehaviour

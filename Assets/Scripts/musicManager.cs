@@ -1,3 +1,6 @@
+//Author: Evita Kanaan
+//Purpose: Controls bgm and keeps it consistent throughout scenes
+
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
