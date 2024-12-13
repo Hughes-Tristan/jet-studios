@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
+    public static WeaponManager Instance { get; private set; }
+    private AudioSource extraAudioSource;
+
     [SerializeField] private Transform mouseVisualTransform;
     [SerializeField] private GridManager gridManager; // Reference to GridManager
     private WeaponTypeListSO weaponTypeList;
@@ -15,12 +18,23 @@ public class WeaponManager : MonoBehaviour
     {
         weaponTypeList = Resources.Load<WeaponTypeListSO>(typeof(WeaponTypeListSO).Name);
         weaponType = null; // Default: No weapon selected
+
+        if (Instance == null)
+        {
+            Instance = this;
+            Debug.Log("ItemManager instance set.");
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
     {
         mainCamera = Camera.main;
         waveManager = WaveManager.Instance;
+        extraAudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -31,6 +45,12 @@ public class WeaponManager : MonoBehaviour
         {
             TryPlaceWeapon();
         }
+    }
+
+    // this function is designed to play the audio for when player doesn't have enough money
+    public void notEnoughMoneySound()
+    {
+        extraAudioSource.Play();
     }
 
     private void TryPlaceWeapon()
@@ -78,6 +98,7 @@ public class WeaponManager : MonoBehaviour
             }
             else
             {
+                notEnoughMoneySound();
                 Debug.Log($"Not enough money! {weaponType.nameString} costs {weaponType.price}.");
             }
         }

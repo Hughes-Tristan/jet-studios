@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PowerUpButton : MonoBehaviour
 {
+    public GameObject speedButtonAnimation;
     public Button powerUpButton;  // The button UI component
     public PlayerController playerController;  // Reference to the player controller script
 
@@ -16,6 +17,7 @@ public class PowerUpButton : MonoBehaviour
     void Start()
     {
         powerUpButton.gameObject.SetActive(false);  // Initially hide the button
+        speedButtonAnimation.gameObject.SetActive(false);
         powerUpButton.onClick.AddListener(OnPowerUpClick);  // Add listener for button click
     }
 
@@ -26,6 +28,7 @@ public class PowerUpButton : MonoBehaviour
         // Show the power-up button if it's been 30 seconds
         if (timeSinceLastPopup >= popupInterval)
         {
+            speedButtonAnimation.gameObject.SetActive(true);
             powerUpButton.gameObject.SetActive(true);  // Make the button visible
         }
     }
@@ -33,7 +36,8 @@ public class PowerUpButton : MonoBehaviour
     // Called when the button is clicked
     private void OnPowerUpClick()
     {
-        powerUpButton.gameObject.SetActive(false);  // Hide the button after it’s clicked
+        speedButtonAnimation.gameObject.SetActive(false);
+        powerUpButton.gameObject.SetActive(false);  // Hide the button after itï¿½s clicked
         timeSinceLastPopup = 0f;  // Reset the timer for next power-up
 
         // Apply the speed boost to the player
