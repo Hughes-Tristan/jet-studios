@@ -207,8 +207,8 @@ MonoBehaviour:
   hitSound: {fileID: 0}
   deathSound: {fileID: 0}
   flashTime: 0.2
-  miniBoss: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  miniBoss: {fileID: 563328872337749452, guid: 05c8c1cfc3fb6814e8ad5c4ab2135087, type: 3}
+  spawnPoint: {fileID: 3871643170385616399}
   bombDamage: 50
   bombSize: 5
   spawnInterval: 7
