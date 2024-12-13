@@ -17,7 +17,7 @@ public class ZombieMovement : MonoBehaviour
     private Animator bossAnimator;
     public float moveSpeed = 2f;
     private Rigidbody2D rb;
-    private bool attacking = false;
+    public bool attacking = false;
     public float health = 10.0f;
     public float maxHealth;
 
@@ -43,7 +43,7 @@ public class ZombieMovement : MonoBehaviour
     private Color enemyOriginal;
     public float flashTime = 0.2f;
 
-    void Start()
+    virtual public void Start()
     {
         zombieAnimator = GetComponent<Animator>();
         bossAnimator = GetComponent<Animator>();
@@ -60,7 +60,7 @@ public class ZombieMovement : MonoBehaviour
 
     }
 
-    void Update()
+    virtual public void Update()
     {
         if (!attacking){
             if(zombieAnimator != null){
@@ -134,7 +134,7 @@ public class ZombieMovement : MonoBehaviour
 
     // this is an attacking coroutines
     // it is used to do damage to the defense when the zombie is attacking
-    public IEnumerator attack(GameObject defense)
+    virtual public IEnumerator attack(GameObject defense)
     {
         while(defense != null && attacking)
         {

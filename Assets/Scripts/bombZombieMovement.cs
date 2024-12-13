@@ -23,7 +23,6 @@ public class bombZombieMovement : ZombieMovement
             {
                 
                 axe_knight_attack axeKnightComponent = hit.GetComponent<axe_knight_attack>();
-                GameOverObject gameEnder = hit.GetComponent<GameOverObject>();
                 temporaryDefense defense = hit.GetComponent<temporaryDefense>();
 
                 if(defense != null ) {
